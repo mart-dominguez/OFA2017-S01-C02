@@ -10,6 +10,19 @@
 <body>
   <div id="principal"></div>
   <script type="text/jsx">
+  var MyTitulo = React.createClass({
+   getDefaultProps: function() {
+              return {
+                  mensaje1: "por defecto sumar"
+              };
+      },      
+      propTypes:{
+                mensaje1: React.PropTypes.string
+          },
+    render: function() {
+        return <div>{this.props.mensaje1}</div>;
+    }
+});
     var MyHelloComponent = React.createClass({
       getInitialState: function() {
         return {
@@ -18,14 +31,7 @@
           resultado: 0
         };
       },
-      getDefaultProps: function() {
-              return {
-                  mensaje1: "por defecto sumar"
-              };
-      },      
-      propTypes:{
-                mensaje1: React.PropTypes.string
-          },
+     
           updateOperador : function(evt){          
             if(evt.target.id==="op1")  this.setState({operador1 : Number.parseInt(evt.target.value)});
             if(evt.target.id==="op2")  this.setState({operador2 : Number.parseInt(evt.target.value)});
@@ -36,7 +42,7 @@
           render: function() {
             return  (
             <div>
-              <div>{this.props.mensaje1}</div>
+              <MyTitulo mensaje1="Calculadora en componentes"/>
               <div>
                 <input onChange={this.updateOperador} id="op1" />
                 <strong>{this.state.operador1}</strong>
