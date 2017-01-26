@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+  <script src="../node_modules/react/dist/react.js"></script>
+  <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+  <script src="JSXTransformer.js"></script>
+</head>
+<body>
+  <div id="principal"></div>
+  <script type="text/jsx">
+    var MyHelloComponent = React.createClass({
+      getInitialState: function() {
+        return {
+          operador1: 0,
+          operador2: 0,
+          resultado: 0
+        };
+      },
+      getDefaultProps: function() {
+              return {
+                  mensaje1: "por defecto sumar"
+              };
+      },      
+      propTypes:{
+                mensaje1: React.PropTypes.string
+          },
+          updateOperador : function(evt){          
+            if(evt.target.id==="op1")  this.setState({operador1 : Number.parseInt(evt.target.value)});
+            if(evt.target.id==="op2")  this.setState({operador2 : Number.parseInt(evt.target.value)});
+          },
+          sumar : function(evt){
+            this.setState({resultado : this.state.operador1 + this.state.operador2});
+          },
+          render: function() {
+            return  (
+            <div>
+              <div>{this.props.mensaje1}</div>
+              <div>
+                <input onChange={this.updateOperador} id="op1" />
+                <strong>{this.state.operador1}</strong>
+              </div>              
+              <div>
+                <input onChange={this.updateOperador} id="op2" />
+                <strong>{this.state.operador2}</strong>
+              </div>
+              <div><button onClick={this.sumar} >Sumar</button></div>
+              <div>{this.state.resultado}</div>
+            </div>);
+          }
+      });
+
+ReactDOM.render(<MyHelloComponent  />, document.getElementById('principal'));
+</script>
+</body>
+</html>
