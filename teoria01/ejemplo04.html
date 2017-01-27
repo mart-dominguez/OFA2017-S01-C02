@@ -33,7 +33,7 @@
                 mensaje1: React.PropTypes.string
           },
     updateOperador : function(){          
-        this.props.update(this.refs.operadorInput.value);       
+        this.props.update(Number.parseInt(this.refs.operadorInput.value));       
     },
     render: function() {
         return (
@@ -57,7 +57,6 @@
                 resultado: React.PropTypes.number
           },
     realizarOperacion : function(){          
-              console.log(" SUMAR !! 2");
         this.props.operacion();       
     },
     render: function() {
@@ -78,15 +77,11 @@
         };
       },
       update : function(key,value){
-        console.log(key);
-        console.log(value);
         var newState = {};
         newState[key] = value;
         this.setState(newState);
       },
       sumar : function(){
-        console.log(" SUMAR !!"+this.state.operador1 );
-        console.log(" SUMAR !!"+this.state.operador2 );
         this.setState({resultado : this.state.operador1 + this.state.operador2});
       },
           render: function() {
@@ -95,7 +90,7 @@
               <MyTitulo mensaje1="Calculadora en componentes"/>
               <MyOperador etiqueta="Operador 1" update={this.update.bind(this, 'operador1')}/>
               <MyOperador etiqueta="Operador 2" update={this.update.bind(this, 'operador2')}/>
-              <MyBotonOperacion  etiqueta="Hacer SUMA" operacion={this.sumar} resultado={this.resultado}/>
+              <MyBotonOperacion  etiqueta="Hacer SUMA" operacion={this.sumar} resultado={this.state.resultado}/>
             </div>);
           }
       });
