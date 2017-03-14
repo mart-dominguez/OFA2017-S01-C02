@@ -5,14 +5,15 @@
   <title>Hello React</title>
   <script src="../node_modules/react/dist/react.js"></script>
   <script src="../node_modules/react-dom/dist/react-dom.js"></script>
-    <script type="text/jsx" src="App.js"></script>
-    <script type="text/jsx" src="componentes/TodoList.js"></script>
-    <script type="text/jsx" src="componentes/UnaTarea.js"></script>
 
   <script src="../JSXTransformer.js"></script>
+  <script type="text/jsx" src="App.js"></script>
+  <script type="text/jsx" src="componentes/TodoList.js"></script>
+  <script type="text/jsx" src="componentes/UnaTarea.js"></script>
 </head>
 <body>
   <div id="principal"></div>
+
   <script type="text/jsx">
 var TAREAS = [
 	{id:1,titulo:"ALgo",estado: "planificada"},
@@ -22,5 +23,6 @@ var TAREAS = [
 
 ReactDOM.render(<App tareas={TAREAS} titulo="Tareas de martin"/>, document.getElementById('principal'));
 </script>
+
 </body>
 </html>

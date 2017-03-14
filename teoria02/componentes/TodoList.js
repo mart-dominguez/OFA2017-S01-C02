@@ -7,9 +7,9 @@ class TodoList extends React.Component {
 
       return (
         <div>
-        	<h1>{{this.props.titulo}}</h1>
-        	<ul>{{paraHacer}}</ul>
-        <div/>
+        	<h1>{this.props.titulo}</h1>
+        	<ul>{paraHacer}</ul>
+        </div>
       );
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import UnaTarea from 'UnaTarea';
+import UnaTarea from './UnaTarea';
 
 class UnaTarea extends React.Component {
     render(){
