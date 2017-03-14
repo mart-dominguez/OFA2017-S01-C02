@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+  <script src="../node_modules/react/dist/react.js"></script>
+  <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../JSXTransformer.js"></script>
+</head>
+<body>
+  <div id="principal"></div>
+  <script type="text/jsx">
+  var MyTitulo = React.createClass({
+        componentWillMount: function() {
+        console.log('componentWillMount');
+    },
+    componentDidMount: function() {
+        console.log('componentDidMount');
+    },
+    componentWillUnmount: function() {
+        console.log('componentWillUnmount');
+    },
+   getDefaultProps: function() {
+              return {
+                  mensaje1: "por defecto sumar"
+              };
+      },      
+      propTypes:{
+                mensaje1: React.PropTypes.string
+          },
+    render: function() {
+        return <div>{this.props.mensaje1}</div>;
+    }
+  });
+  var MyOperador = React.createClass({
+     getDefaultProps: function() {
+              return {
+                  etiqueta: "Operador"
+              };
+      },      
+      propTypes:{
+                mensaje1: React.PropTypes.string
+          },
+    updateOperador : function(){          
+        this.props.update(Number.parseInt(this.refs.operadorInput.value));       
+    },
+    render: function() {
+        return (
+          <div>
+                <span>{this.props.etiqueta}</span>
+                <input onChange={this.updateOperador} ref='operadorInput' />
+                <strong>{this.props.operador1}</strong>
+          </div>              
+        );
+    }
+  });
+  var MyBotonOperacion = React.createClass({
+     getDefaultProps: function() {
+        return {
+                  etiqueta: "Operador",
+                  resultado:0
+              };
+      },      
+      propTypes:{
+                etiqueta: React.PropTypes.string,
+                resultado: React.PropTypes.number
+          },
+    realizarOperacion : function(){          
+        this.props.operacion();       
+    },
+    render: function() {
+        return (
+        <div>
+              <div>
+                  <button type="button" className="btn btn-default btn-lg" onClick={this.realizarOperacion} >
+                    {this.props.children}{this.props.etiqueta}
+                  </button>
+                </div>
+              <div>{this.props.resultado}</div>
+        </div>
+        );
+    }
+  });
+  var GlyphIcon = React.createClass({
+   render: function() {
+       return (
+<span className={'glyphicon glyphicon-' 
++ this.props.icon}>
+</span>
+);
+   }
+});
+    var MyHelloComponent = React.createClass({
+      getInitialState: function() {
+        return {
+          operador1: 0,
+          operador2: 0,
+          resultado: 0
+        };
+      },
+      update : function(key,value){
+        var newState = {};
+        newState[key] = value;
+        this.setState(newState);
+      },
+      sumar : function(){
+        this.setState({resultado : this.state.operador1 + this.state.operador2});
+      },
+          render: function() {
+            return  (
+            <div>
+              <MyTitulo mensaje1="Calculadora en componentes"/>
+              <MyOperador etiqueta="Operador 1" update={this.update.bind(this, 'operador1')}/>
+              <MyOperador etiqueta="Operador 2" update={this.update.bind(this, 'operador2')}/>
+              <MyBotonOperacion  etiqueta="Sumar" operacion={this.sumar} resultado={this.state.resultado}>
+                <GlyphIcon icon='plus'/>
+              </MyBotonOperacion>
+            </div>);
+          }
+      });
+
+ReactDOM.render(<MyHelloComponent  />, document.getElementById('principal'));
+</script>
+</body>
+</html>
