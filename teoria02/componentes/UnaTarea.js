@@ -1,13 +1,27 @@
 import React from 'react';
-import UnaTarea from './UnaTarea';
 
 class UnaTarea extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {editar:false};
+	}
+
+
     render(){
+    	let tarea = undefined;
+    	if(this.state.editar) {
+			tarea =<EditarUnaTarea onEstadoChange={this.props.actualizar} tarea={this.props.tarea}>
+    	}else{
+    		 tarea = <li>
+        		<strong>{this.props.tarea.titulo}</strong>
+        		<span>{this.props.tarea.estado}</span>
+        		<span>{this.props.tarea.estado}</span>
+        		<button onClick={this.editar}>editar</button>
+        	<li/>,
+    	}
 		return (
-        	<li>
-        		<strong>{this.props.titulo}</strong>
-        		<span>{this.props.estado}</span>
-        	<li/>
+			tarea;
       	);
     }
 }

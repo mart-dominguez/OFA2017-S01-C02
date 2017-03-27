@@ -3,26 +3,12 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>Hello React</title>
-  <script src="../node_modules/react/dist/react.js"></script>
-  <script src="../node_modules/react-dom/dist/react-dom.js"></script>
-
-  <script src="../JSXTransformer.js"></script>
-  <script type="text/jsx" src="App.js"></script>
-  <script type="text/jsx" src="componentes/TodoList.js"></script>
-  <script type="text/jsx" src="componentes/UnaTarea.js"></script>
 </head>
 <body>
+  <h1>HOLA</h1>
+    <script type="text/jsx" src="../bundle.js"></script>
+
   <div id="principal"></div>
-
-  <script type="text/jsx">
-var TAREAS = [
-	{id:1,titulo:"ALgo",estado: "planificada"},
-	{id:2,titulo:"poco",estado: "en curso"},
-	{id:3,titulo:"mucho",estado: "terminada"}
-];
-
-ReactDOM.render(<App tareas={TAREAS} titulo="Tareas de martin"/>, document.getElementById('principal'));
-</script>
 
 </body>
 </html>
