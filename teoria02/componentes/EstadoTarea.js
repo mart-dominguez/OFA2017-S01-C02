@@ -7,16 +7,17 @@ class EstadoTarea extends React.Component {
   	}
 
   	handleChange(e) {
-    	 this.props.onEstadoChange(e.target.value);
+
+       this.props.estadoChange(this.props.indice,e.target.name,e.target.value);
   	}
 
     render(){
 		return (
-        	<select value={this.props.estado} onChange={this.handleChange}>
+        	<select value={this.props.estado} onChange={this.handleChange} name={this.props.nombre}>
             	<option value="planificada">Para hacer</option>
-				<option value="encurso">En Curso</option>
+				      <option value="encurso">En Curso</option>
             	<option value="finalizada">Terminada!</option>
-        	<select/>
+        	</select>
       	);
     }
 }

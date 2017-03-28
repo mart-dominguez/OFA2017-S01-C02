@@ -3,7 +3,7 @@ var webpack = require('webpack');
  
 module.exports = {
   entry: './teoria02/App.js',
-  output: { path: __dirname, filename: 'bundle.js' },
+  output: { path: __dirname+'/teoria02/', filename: 'bundle.js' },
   module: {
     loaders: [
       {

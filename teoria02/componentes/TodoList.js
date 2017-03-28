@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'; import UnaTarea from './UnaTarea';
 
 class TodoList extends React.Component {
+	constructor(props){
+        super(props);
+    }
     render(){
- 	const tareas = props.tareas;
-  	const paraHacer = tareas.map((unaTarea,indice) => <UnaTarea tarea={unaTarea} actualizar={this.props.actualizar} key={indice}></UnaTarea>);
+    	console.log(this.props.tareas);
+  	const paraHacer = this.props.tareas.map((unaTarea,indice) => <UnaTarea tarea={unaTarea} actualizar={this.props.actualizar} guardar={this.props.actualizar} indice={indice} key={indice}></UnaTarea>);
 
       return (
         <div>
