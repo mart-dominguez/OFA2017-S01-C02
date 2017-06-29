@@ -9,18 +9,15 @@ class App extends React.Component {
         // Set initial state
         this.state = {
             tareas: [ 
-                    {id:1,titulo:"ALgo",estado: "planificada"},
-                    {id:2,titulo:"poco",estado: "en curso"},
-                    {id:3,titulo:"mucho",estado: "terminada"}
+                    {id:1,titulo:"Tarea1",estado: "planificada"},
+                    {id:2,titulo:"Tarea2",estado: "en-curso"},
+                    {id:3,titulo:"Tarea3",estado: "terminada"}
                 ]
         };
         this.update = this.update.bind(this);
       }
 
     update(indice,key,value){
-        console.log(indice);
-        console.log(key);
-        console.log(value);
         var newObject = this.state.tareas[indice];
         newObject[key] = value;
         this.state.tareas.splice(indice,1,newObject);
